@@ -1,8 +1,10 @@
 const mongoose = require("../database/mongodb.js");
-const mongoose = require("..//mongodb.js");
-const User = new mongoose.Schema({
-    name: { type: String, required: true },
-    email: { type: String, required: true, unique: true},
-    password: { type: String, required: true}
+// const User = require("./Consumable");
+
+const Member = new mongoose.Schema({
+    position: { type: String, required: true },
+    cpf: { type: String, required: true, unique: true},
+    user:  { type: mongoose.Schema.Types.ObjectId, ref: "User"},
+    // evaluations
 });
-module.exports = mongoose.model("User", User);
+module.exports = mongoose.model("Member", Member);
