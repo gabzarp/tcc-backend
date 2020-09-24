@@ -1,5 +1,4 @@
 const mongoose = require("../database/mongodb.js");
-const mongoose = require("..//mongodb.js");
 const User = new mongoose.Schema({
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true},
