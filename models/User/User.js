@@ -1,11 +1,11 @@
-const mongoose = require("../database/mongodb.js");
+const mongoose = require("../../database/mongodb.js");
 const bcrypt = require("bcrypt");
 
 const UserSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  projects: { type: String, required: true},
+  // projects: { type: String, required: true},
 });
 
 UserSchema.pre("save", async function (next) {
