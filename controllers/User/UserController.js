@@ -1,5 +1,11 @@
-const User = require("../models/User/User");
+const User = require("../../models/User/User");
+const { CreateMember } = require("../../controllers/User/MemberController");
+const { CreateCompany } = require("../../controllers/User/CompanyController");
 
+const userType = {
+  'member': CreateMember,
+  'company': CreateCompany
+}
 const UserController = {
   signup: async (ctx) => {
     try {
@@ -8,6 +14,9 @@ const UserController = {
         email: ctx.request.body.email,
         password: ctx.request.body.password,
       });
+
+      userType[ctx.request.body.user_type]
+
       ctx.body = user;
       ctx.status = 200;
     } catch (error) {
