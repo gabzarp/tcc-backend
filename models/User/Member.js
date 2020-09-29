@@ -6,4 +6,5 @@ const Member = new mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   // evaluations
 });
+
 module.exports = mongoose.model("Member", Member);
