@@ -3,21 +3,22 @@ const { CreateMember } = require("../../controllers/User/MemberController");
 const { CreateCompany } = require("../../controllers/User/CompanyController");
 
 const userType = {
-  'member': CreateMember,
-  'company': CreateCompany
-}
+  member: CreateMember,
+  company: CreateCompany,
+};
 const UserController = {
   signup: async (ctx) => {
     try {
-      var user = await User.create({
-        name: ctx.request.body.name,
-        email: ctx.request.body.email,
-        password: ctx.request.body.password,
+      const body = ctx.request.body;
+      const user = await User.create({
+        name: body.name,
+        email: body.email,
+        password: body.password,
       });
 
-      userType[ctx.request.body.user_type]
+      const typedUser = await userType[body.user_type](user._id, body);
 
-      ctx.body = user;
+      ctx.body = typedUser;
       ctx.status = 200;
     } catch (error) {
       ctx.body = error;
