@@ -1,5 +1,4 @@
 const mongoose = require("../../database/mongodb");
-// const User = require("./Consumable");
 
 const Member = new mongoose.Schema({
   position: { type: String, required: true },
