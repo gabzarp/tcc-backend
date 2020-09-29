@@ -1,10 +1,22 @@
 const User = require("../../models/User/User");
-const { CreateMember } = require("../../controllers/User/MemberController");
-const { CreateCompany } = require("../../controllers/User/CompanyController");
+const {
+  CreateMember,
+  DeleteMember,
+} = require("../../controllers/User/MemberController");
+const {
+  CreateCompany,
+  DeleteCompany,
+} = require("../../controllers/User/CompanyController");
 
 const userType = {
-  member: CreateMember,
-  company: CreateCompany,
+  member: {
+    signup: CreateMember,
+    delete: DeleteMember,
+  },
+  company: {
+    signup: CreateCompany,
+    delete: DeleteCompany,
+  },
 };
 const UserController = {
   signup: async (ctx) => {
@@ -16,7 +28,7 @@ const UserController = {
         password: body.password,
       });
 
-      const typedUser = await userType[body.user_type](user._id, body);
+      const typedUser = await userType[body.user_type].signup(user._id, body);
 
       ctx.body = typedUser;
       ctx.status = 200;
@@ -36,6 +48,23 @@ const UserController = {
     } catch (error) {
       ctx.body = error;
       ctx.status = 500;
+      console.log(error);
+    }
+  },
+
+  delete: async (ctx) => {
+    try {
+      const body = ctx.request.body;
+      const id = ctx.params.id;
+
+      const baseUserId = await userType[body.user_type].delete(id);
+
+      const deleted = await User.deleteOne({ _id: baseUserId });
+
+      const deletedMessage = `${deleted.n} entries deleted`;
+
+      ctx.body = deletedMessage;
+    } catch (error) {
       console.log(error);
     }
   },

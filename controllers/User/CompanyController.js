@@ -15,4 +15,16 @@ const CreateCompany = async (userId, body) => {
   }
 };
 
-module.exports = { CreateCompany };
+const DeleteCompany = async (id) => {
+  try {
+    const company = await Company.findById(id);
+    const userId = company.user;
+    await Company.deleteOne({ _id: id });
+
+    return userId;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports = { CreateCompany, DeleteCompany };

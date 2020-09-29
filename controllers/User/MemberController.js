@@ -16,4 +16,16 @@ const CreateMember = async (userId, body) => {
   }
 };
 
-module.exports = { CreateMember };
+const DeleteMember = async (id) => {
+  try {
+    const member = await Member.findById(id);
+    const userId = member.user;
+    await Member.deleteOne({ _id: id });
+
+    return userId;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports = { CreateMember, DeleteMember };
