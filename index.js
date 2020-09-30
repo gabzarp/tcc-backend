@@ -28,4 +28,4 @@ app.use(logger());
 
 app.use(router)
 
-app.listen(3001);
+app.listen(process.env.PORT);
