@@ -1,4 +1,4 @@
-const mongoose = require("../database/mongodb.js");
+const mongoose = require("../../database/mongodb.js");
 
 const EvaluationType = new mongoose.Schema({
     name: { type: String, required: true }

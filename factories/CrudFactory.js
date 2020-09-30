@@ -15,25 +15,25 @@ const entities = {
 module.exports = {
   async create(type, ctx) {
     let createType = entities[type];
-    return await createType.create(ctx.request.body);
+    ctx.body = await createType.create(ctx.request.body);
   },
   async update(type, ctx) {
     let createType = entities[type];
-    return await createType.updateOne(
+    ctx.body = await createType.updateOne(
       { _id: ctx.request.params.id },
       { $set: ctx.request.body }
     );
   },
   async delete(type, ctx) {
     let createType = entities[type];
-    return await createType.deleteOne({ _id: ctx.request.params.id });
+    ctx.body = await createType.deleteOne({ _id: ctx.request.params.id });
   },
-  async getAll(type) {
+  async getAll(type, ctx) {
     let createType = entities[type];
-    return await createType.find();
+    ctx.body = await createType.find();
   },
   async getById(type, ctx) {
     let createType = entities[type];
-    return await createType.findOne({ _id: ctx.request.params.id });
+    ctx.body = await createType.findOne({ _id: ctx.request.params.id });
   },
 };

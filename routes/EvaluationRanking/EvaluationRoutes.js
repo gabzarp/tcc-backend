@@ -5,10 +5,10 @@ const router = new Router();
 const CrudFactory = require('../../factories/CrudFactory')
 
 router
-.post('/evaluation',CrudFactory.create('Evaluation', ctx))
-.get('/evaluations', CrudFactory.getAll('Evaluation', ctx)) 
-.get('/evaluation/:id', CrudFactory.getById('Evaluation', ctx)) 
-.patch('/evaluation/:id', CrudFactory.update('Evaluation', ctx))
-.delete('/evaluation/:id', CrudFactory.delete('Evaluation', ctx))
+.post('/evaluation',(ctx)=> CrudFactory.create('Evaluation', ctx))
+.get('/evaluations', (ctx)=> CrudFactory.getAll('Evaluation', ctx)) 
+.get('/evaluation/:id', (ctx)=> CrudFactory.getById('Evaluation', ctx)) 
+.patch('/evaluation/:id', (ctx)=> CrudFactory.update('Evaluation', ctx))
+.delete('/evaluation/:id',(ctx)=>  CrudFactory.delete('Evaluation', ctx))
 
 module.exports = router.routes()

@@ -1,4 +1,4 @@
-const mongoose = require("../database/mongodb.js");
+const mongoose = require("../../database/mongodb.js");
 
 const Evaluation = new mongoose.Schema({
     member:  { type: mongoose.Schema.Types.ObjectId, ref: "Member"},

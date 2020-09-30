@@ -2,11 +2,13 @@ const Router = require("koa-router")
 
 const router = new Router();
 
-const CrudFactory = require('../factories/CrudFactory')
+const CrudFactory = require('../../factories/CrudFactory')
 
-module.exports = router
-.post('/dead-line',CrudFactory.create('DeadLine', ctx))
-.get('/dead-lines', CrudFactory.getAll('DeadLine', ctx)) 
-.get('/dead-line/:id', CrudFactory.getById('DeadLine', ctx)) 
-.patch('/dead-line/:id', CrudFactory.update('DeadLine', ctx))
-.delete('/dead-line/:id', CrudFactory.delete('DeadLine', ctx))
+router
+.post('/dead-line',(ctx)=> CrudFactory.create('DeadLine', ctx))
+.get('/dead-lines', (ctx)=> CrudFactory.getAll('DeadLine', ctx)) 
+.get('/dead-line/:id', (ctx)=> CrudFactory.getById('DeadLine', ctx)) 
+.patch('/dead-line/:id', (ctx)=> CrudFactory.update('DeadLine', ctx))
+.delete('/dead-line/:id', (ctx)=> CrudFactory.delete('DeadLine', ctx))
+
+module.exports = router.routes();
