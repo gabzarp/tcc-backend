@@ -1,4 +1,5 @@
 const Company = require("../models/User/Company");
+const { createIndexes } = require("../models/User/Member");
 const Member = require("../models/User/Member");
 
 const entities = {
@@ -9,8 +10,6 @@ const entities = {
 module.exports = {
   create: async (type, user, body) => {
     const createType = entities[type];
-    let member = await createType.create({ body, user });
-
-    return await member.populate("user").execPopulate();
+    return await createType.create({ body, user });
   },
 };

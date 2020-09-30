@@ -27,6 +27,7 @@
     "koa-mongo": "^1.9.2",
     "koa-router": "^9.4.0",
     "mongoose": "^5.10.6",
+    "mongoose-autopopulate": "^0.12.2",
     "mongoose-schema-extend": "^0.2.2"
   }
 }
