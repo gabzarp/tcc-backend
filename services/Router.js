@@ -1,10 +1,10 @@
 const compose = require('koa-compose');
 
-const Evaluation = require('../Routes/EvaluationRanking/EvaluationRoutes')
-const EvaluationType = require('../Routes/EvaluationRanking/EvaluationTypeRoutes')
-const DeadLine = require('../Routes/Project/DeadLineRoutes')
-const ExternalSources = require('../Routes/Project/ExternalSourcesRoutes')
-const Project = require('../Routes/Project/ProjectRoutes')
-const User = require('../Routes/User/UserRoutes')
+const Evaluation = require('../routes/EvaluationRanking/EvaluationRoutes')
+const EvaluationType = require('../routes/EvaluationRanking/EvaluationTypeRoutes')
+const DeadLine = require('../routes/Project/DeadLineRoutes')
+const ExternalSources = require('../routes/Project/ExternalSourcesRoutes')
+const Project = require('../routes/Project/ProjectRoutes')
+const User = require('../routes/User/UserRoutes')
 
 module.exports = compose([Evaluation, EvaluationType, DeadLine, ExternalSources, Project, User])

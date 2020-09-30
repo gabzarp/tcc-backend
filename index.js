@@ -5,8 +5,6 @@ const cors = require('@koa/cors');
 const bodyParser = require('koa-bodyparser');
 const router = require('./services/Router');
 
-const mongo = require('koa-mongo')
-
 const app = new Koa();
 
 app.use(async (ctx, next) => {
