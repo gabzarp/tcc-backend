@@ -1,16 +1,41 @@
-const mongoose = require("../../database/mongodb.js");
+const mongoose = require('../../database/mongodb.js')
 
-const Project = new mongoose.Schema({
-    name: { type: String, required: true},
-    members: [{ type: mongoose.Schema.Types.ObjectId, ref: "Member", autopopulate: true}],
-    owner: { type: mongoose.Schema.Types.ObjectId, ref: "Company", autopopulate: true},
-    externalSources: [{ type: mongoose.Schema.Types.ObjectId, ref: "ExternalSources", autopopulate: true}],
-    documents: [{ type: String}],
-    deadLines: [{ type: mongoose.Schema.Types.ObjectId, ref: "DeadLine",autopopulate: true}],
-},
-{
-    timestamps: true
-});
-Project.plugin(require('mongoose-autopopulate'));
+const Project = new mongoose.Schema(
+    {
+        name: { type: String, required: true },
+        members: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Member',
+                autopopulate: true,
+            },
+        ],
+        owner: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Company',
+            autopopulate: true,
+        },
+        externalSources: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'ExternalSources',
+                autopopulate: true,
+            },
+        ],
+        documents: [{ type: String }],
+        deadLines: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'DeadLine',
+                autopopulate: true,
+            },
+        ],
+        description: String,
+    },
+    {
+        timestamps: true,
+    }
+)
+Project.plugin(require('mongoose-autopopulate'))
 
-module.exports = mongoose.model("Project", Project);
+module.exports = mongoose.model('Project', Project)
