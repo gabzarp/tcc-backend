@@ -8,7 +8,7 @@ router
   .post("/project", (ctx)=> CrudFactory.create("Project", ctx))
   .get("/projects", (ctx)=> CrudFactory.getAll("Project", ctx))
   .get("/project/:id", (ctx)=> CrudFactory.getById("Project", ctx))
-  .patch("/project/:id", (ctx)=> CrudFactory.update("Project", ctx))
+  .patch("/project", (ctx)=> CrudFactory.update("Project", ctx))
   .delete("/project/:id", (ctx)=> CrudFactory.delete("Project", ctx));
 
 module.exports = router.routes();
