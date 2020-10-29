@@ -23,13 +23,6 @@ const Project = new mongoose.Schema(
             },
         ],
         documents: [{ type: String }],
-        deadLines: [
-            {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'DeadLine',
-                autopopulate: true,
-            },
-        ],
         description: String,
     },
     {

@@ -26,7 +26,7 @@ module.exports = {
     }
     else{
       ctx.body = await createType.updateOne(
-        { _id: ctx.request.params.id },
+        { _id: ctx.request.body._id },
         { $set: ctx.request.body }
       );
     }
