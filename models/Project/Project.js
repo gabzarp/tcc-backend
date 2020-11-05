@@ -7,12 +7,19 @@ const Project = new mongoose.Schema(
             {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: 'Member',
-                autopopulate: true,
+                autopopulate: true
+            },
+        ],
+        invites: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Member',
+                autopopulate: true
             },
         ],
         owner: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Company',
+            ref: 'User',
             autopopulate: true,
         },
         externalSources: [
@@ -24,6 +31,10 @@ const Project = new mongoose.Schema(
         ],
         documents: [{ type: String }],
         description: String,
+        taken: {
+            type: Boolean,
+            default: false
+        }
     },
     {
         timestamps: true,

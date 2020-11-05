@@ -4,6 +4,7 @@ const DeadLine = require("../models/Project/DeadLine");
 const ExternalSources = require("../models/Project/ExternalSources");
 const Project = require("../models/Project/Project");
 const Member = require("../models/User/Member");
+const User = require("../models/User/User");
 
 const entities = {
   Evaluation,
@@ -11,7 +12,8 @@ const entities = {
   DeadLine,
   ExternalSources,
   Project,
-  Member
+  Member,
+  User
 };
 
 module.exports = {
@@ -25,11 +27,13 @@ module.exports = {
       ctx.body = await createType.create(ctx.request.body);
     }
     else{
-      ctx.body = await createType.updateOne(
+      await createType.updateOne(
         { _id: ctx.request.body._id },
         { $set: ctx.request.body }
-      );
+        );
+      ctx.body = ctx.request.body
     }
+    console.log(ctx.body)
   },
   async delete(type, ctx) {
     let createType = entities[type];
