@@ -34,6 +34,10 @@ const Project = new mongoose.Schema(
         taken: {
             type: Boolean,
             default: false
+        },
+        isFinished: {
+            type: Boolean,
+            default: false
         }
     },
     {
