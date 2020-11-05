@@ -5,6 +5,7 @@ module.exports = {
         try {
             const trelloProject = await axios.post(`https://api.trello.com/1/boards/?key=${process.env.TRELLO_API}&token=${process.env.TRELLO_TOKEN}&name=${project.name}`);
             const trelloExternalSources = new ExternalSources({name: 'Trello', link: trelloProject.data.url, sourceId: trelloProject.data.id})
+            trelloExternalSources.save()
             project.externalSources.push(trelloExternalSources)
             project.save()
             return trelloExternalSources;
@@ -12,7 +13,13 @@ module.exports = {
             console.log(error)
         }
     },
-    inviteMember: (sourceId, email)=>{
-        axios.post(`https://api.trello.com/1/boards/${sourceId}/members?key=${process.env.TRELLO_API}&token=${process.env.TRELLO_TOKEN}&email=${email}`)
+    inviteMember: async (sourceId, email)=>{
+        try{
+            const trelloInvite = await axios.put(`https://api.trello.com/1/boards/${sourceId}/members?key=${process.env.TRELLO_API}&token=${process.env.TRELLO_TOKEN}&email=${email}`);
+            return trelloInvite;
+        }
+        catch(error){
+            console.log(error)
+        }
     }
 }
