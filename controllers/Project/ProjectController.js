@@ -1,5 +1,7 @@
 const User = require("../../models/User/User");
 const Project = require("../../models/Project/Project");
+const {createBoard, inviteMember} = require('../Integrations/Trello')
+
 
 const ProjectController = {
   associateUserWithProject: async (ctx) => {
@@ -27,5 +29,29 @@ const ProjectController = {
       console.log(error);
     }
   },
+  projectStart: async (ctx)=>{
+    try {
+        let project = await Project.findOne({_id: ctx.request.body.projectId});
+        console.log(project.members)
+        let member = await Member.findOne({user: ctx.request.body.userId});
+        project.members.push(member);
+        project.save();
+        
+        member.user.projects.push(project);
+        member.save();
+        
+        const board = await createBoard(project)
+        inviteMember(board.sourceId, member.user.email)
+        ctx.body = "Success";
+        ctx.status = 200;
+    } catch (error) {
+        tx.body = error;
+        ctx.status = 500;
+        console.log(error)
+    }
+  }
 };
-module.exports = ProjectController;
+
+
+module.exports = ProjectController
+
