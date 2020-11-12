@@ -7,26 +7,26 @@ const Project = new mongoose.Schema(
             {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: 'Member',
-                autopopulate: true
+                autopopulate: { maxDepth: 2 }
             },
         ],
         invites: [
             {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: 'Member',
-                autopopulate: true
+                autopopulate: { maxDepth: 2 }
             },
         ],
         owner: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User',
-            autopopulate: true,
+            autopopulate: { maxDepth: 2 },
         },
         externalSources: [
             {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: 'ExternalSources',
-                autopopulate: true,
+                autopopulate: { maxDepth: 2 },
             },
         ],
         documents: [{ type: String }],

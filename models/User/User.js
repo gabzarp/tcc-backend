@@ -6,7 +6,7 @@ const UserSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   user_type: { type: String, required: true },
-  projects: [{ type:  mongoose.Schema.Types.ObjectId, ref: "Project", autopopulate: true }],
+  projects: [{ type:  mongoose.Schema.Types.ObjectId, ref: "Project", autopopulate: { maxDepth: 2 } }],
 });
 
 UserSchema.plugin(require('mongoose-autopopulate'));
