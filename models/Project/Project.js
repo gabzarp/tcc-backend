@@ -41,7 +41,6 @@ const Project = new mongoose.Schema(
         },
         dueDate: {
             type: Date,
-            required:true
         }
     },
     {
