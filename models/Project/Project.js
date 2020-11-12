@@ -38,6 +38,10 @@ const Project = new mongoose.Schema(
         isFinished: {
             type: Boolean,
             default: false
+        },
+        dueDate: {
+            type: Date,
+            required:true
         }
     },
     {
