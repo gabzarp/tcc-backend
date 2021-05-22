@@ -1,6 +1,8 @@
 const Evaluation = require("../models/EvaluationRanking/Evaluation");
 const EvaluationType = require("../models/EvaluationRanking/EvaluationType");
 const DeadLine = require("../models/Project/DeadLine");
+const Risks = require("../models/Project/Risks");
+const Expenses = require("../models/Project/Expenses");
 const ExternalSources = require("../models/Project/ExternalSources");
 const Project = require("../models/Project/Project");
 const Member = require("../models/User/Member");
@@ -13,7 +15,9 @@ const entities = {
   ExternalSources,
   Project,
   Member,
-  User
+  User,
+  Risks,
+  Expenses
 };
 
 module.exports = {

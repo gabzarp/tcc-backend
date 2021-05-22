@@ -30,7 +30,26 @@ const Project = new mongoose.Schema(
             },
         ],
         documents: [{ type: String }],
+        risks: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Risks',
+                autopopulate: { maxDepth: 2 },
+            },
+        ],
+        expenses: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Expenses',
+                autopopulate: { maxDepth: 2 },
+            },
+        ],
+        documents: [{ type: String }],
         description: String,
+        scope: String,
+        justification: String,
+        objectives: String,
+        goal: String,
         taken: {
             type: Boolean,
             default: false
