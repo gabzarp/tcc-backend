@@ -9,5 +9,6 @@ const ExternalSources = require('../routes/Project/ExternalSourcesRoutes')
 const Project = require('../routes/Project/ProjectRoutes')
 const User = require('../routes/User/UserRoutes')
 const Member = require('../routes/User/MemberRoutes')
+const Message = require('../routes/Project/MessageRoutes')
 
-module.exports = compose([Evaluation, EvaluationType, DeadLine, Expenses, Risks, ExternalSources, Project, User, Member])
+module.exports = compose([Evaluation, EvaluationType, DeadLine, Expenses, Risks, ExternalSources, Project, User, Member, Message])

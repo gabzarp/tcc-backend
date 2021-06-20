@@ -1,6 +1,7 @@
 const User = require("../../models/User/User");
 const Member = require("../../models/User/Member");
 const Project = require("../../models/Project/Project");
+const Chat = require("../../models/Project/Chat");
 const {createBoard, inviteMember} = require('../Integrations/Trello');
 const { findById } = require("../../models/User/User");
 
@@ -51,12 +52,16 @@ const ProjectController = {
         let user = await User.findOne({_id: ctx.request.body.userId});
         await project.members.push(member);
         project.taken = true;
-        project.save();
         
         await user.projects.push(project);
         user.save();
+        let chat = await Chat.create({project: project._id});
+        project.chat = chat;
+        
+        project.save();
         const board = await createBoard(project)
         inviteMember(board.sourceId, user.email)
+        
         ctx.body = "Success";
         ctx.status = 200;
     } catch (error) {

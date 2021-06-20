@@ -7,6 +7,7 @@ const ExternalSources = require("../models/Project/ExternalSources");
 const Project = require("../models/Project/Project");
 const Member = require("../models/User/Member");
 const User = require("../models/User/User");
+const Message = require("../models/Project/Message");
 
 const entities = {
   Evaluation,
@@ -17,7 +18,8 @@ const entities = {
   Member,
   User,
   Risks,
-  Expenses
+  Expenses,
+  Message
 };
 
 module.exports = {

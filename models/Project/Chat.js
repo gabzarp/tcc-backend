@@ -1,14 +1,18 @@
 const mongoose = require("../../database/mongodb.js");
 
 const Chat = new mongoose.Schema({
-    name: { type: String, required: true},
-    users: [
+    messages:[ 
+        {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Message',
+        autopopulate: { maxDepth: 1 }
+    }],
+    project: 
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Member',
-            autopopulate: { maxDepth: 2 }
-        },
-    ]
+            ref: 'Project',
+            autopopulate: { maxDepth: 1 }
+        }
 });
 
 module.exports = mongoose.model("Chat", Chat);

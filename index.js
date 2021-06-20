@@ -26,5 +26,5 @@ app.use(logger());
 
 app.use(router)
 
-app.listen(3001);
+app.listen(3010);
 //app.listen(process.env.PORT, () => console.log("Server Running on port " + process.env.PORT));

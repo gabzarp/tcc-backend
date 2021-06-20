@@ -22,6 +22,11 @@ const Project = new mongoose.Schema(
             ref: 'User',
             autopopulate: { maxDepth: 2 },
         },
+        chat: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Chat',
+            autopopulate: { maxDepth: 1 },
+        },
         externalSources: [
             {
                 type: mongoose.Schema.Types.ObjectId,

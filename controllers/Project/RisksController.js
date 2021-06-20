@@ -1,11 +1,11 @@
 const mongoose = require("../../database/mongodb")
-const Expenses = require("../../models/Project/Expenses");
+const Risks = require("../../models/Project/Risks");
 
 
 const getProjectRisks = async (ctx) => {
   const projectId = ctx.request.params.id
-  const expenses = await Expenses.find({project: projectId });
-  ctx.body = expenses;
+  const risks = await Risks.find({project: projectId });
+  ctx.body = risks;
 }
 
 module.exports ={getProjectRisks};
