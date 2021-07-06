@@ -5,7 +5,7 @@ module.exports = {
         try {
             const trelloProject = await axios.post(`https://api.trello.com/1/boards/?key=${process.env.TRELLO_API}&token=${process.env.TRELLO_TOKEN}&name=${project.name}`);
             console.log(trelloProject)
-            const trelloExternalSources = new ExternalSources({name: 'Trello', link: trelloProject.data.url, sourceId: trelloProject.data.id})
+            const trelloExternalSources = new ExternalSources({name: 'Trello', link: trelloProject.data.url, sourceId: trelloProject.data.id, idOrganization: 'redtcc'})
             trelloExternalSources.save()
             project.externalSources.push(trelloExternalSources)
             project.save()
